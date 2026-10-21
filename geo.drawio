@@ -889,7 +889,7 @@
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--336" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#FFF7ED;strokeColor=#EA580C;fontColor=#7C2D12;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="Co-Evolving Critic" vertex="1">
           <mxGeometry height="60" width="200" x="7005" y="2123" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--338" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#079455;fillColor=#ECFDF3;align=center;verticalAlign=middle;rounded=1;arcSize=8;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;overflow=hidden;" value="Online Co-Evolution" vertex="1">
-          <mxGeometry height="40" width="170" x="7020" y="1858" as="geometry"/>
+          <mxGeometry height="40" width="170" x="7305" y="1850" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--340" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ECFDF3;strokeColor=#079455;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="" vertex="1">
           <mxGeometry height="143" width="220" x="6995" y="2268" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--387" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--341" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#475467;fontSize=11;fontFamily=Arial;" target="0LD-CIEcB2LvlnDhH_h--285">
@@ -902,7 +902,7 @@
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--341" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#FFF7ED;strokeColor=#EA580C;fontColor=#7C2D12;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="Critic-Guided Multi-Turn Rewriting" vertex="1">
           <mxGeometry height="60" width="200" x="7005" y="2325" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--342" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#079455;fillColor=#ECFDF3;align=center;verticalAlign=middle;rounded=1;arcSize=8;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;overflow=hidden;" value="Inference" vertex="1">
-          <mxGeometry height="40" width="170" x="7020" y="2268" as="geometry"/>
+          <mxGeometry height="40" width="170" x="7305" y="2250" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--349" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--346" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#475467;fontSize=11;fontFamily=Arial;" target="0LD-CIEcB2LvlnDhH_h--332">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--346" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ECFDF3;strokeColor=#079455;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="GEO策略结构" vertex="1">
@@ -939,7 +939,7 @@
           <mxGeometry relative="1" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--362" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#FFF7ED;strokeColor=#EA580C;fontColor=#7C2D12;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="PND Score" vertex="1">
           <mxGeometry height="60" width="200" x="6440" y="2092" as="geometry"/>
-        </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--380" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--369" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#475467;fontSize=11;fontFamily=Arial;" target="0LD-CIEcB2LvlnDhH_h--281">
+        </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--380" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--375" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#475467;fontSize=11;fontFamily=Arial;" target="0LD-CIEcB2LvlnDhH_h--281">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--369" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;fillOpacity=65;dashed=1;dashPattern=6 6;" value="" vertex="1">
           <mxGeometry height="220.5" width="220" x="7295" y="1550.25" as="geometry"/>
@@ -948,7 +948,11 @@
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--373" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ECFDF3;strokeColor=#079455;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="MLP Layers" vertex="1">
           <mxGeometry height="60" width="200" x="7305" y="1679.75" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--375" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#079455;fillColor=#ECFDF3;align=center;verticalAlign=middle;rounded=1;arcSize=8;fontColor=#065F46;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;overflow=hidden;" value="LoRA Tuning" vertex="1">
-          <mxGeometry height="40" width="170" x="7320" y="1550.25" as="geometry"/>
+          <mxGeometry height="40" width="170" x="7305" y="1450" as="geometry"/>
+        </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--388" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--371" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;" target="0LD-CIEcB2LvlnDhH_h--375">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--389" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--371" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;" target="0LD-CIEcB2LvlnDhH_h--373">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--379" edge="1" parent="1" source="0LD-CIEcB2LvlnDhH_h--378" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#94A3B8;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#475467;fontSize=11;fontFamily=Arial;" target="0LD-CIEcB2LvlnDhH_h--332">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell><mxCell id="0LD-CIEcB2LvlnDhH_h--378" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#F5F3FF;strokeColor=#7C3AED;fontColor=#4C1D95;strokeWidth=1.5;fontSize=13;fontFamily=Arial;spacing=8;shadow=0;align=center;verticalAlign=middle;overflow=hidden;" value="LLM策略变异 LLM Strategy Mutating" vertex="1">

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import "kanx-workflow/styles.css";
 import "./globals.css";
+import "./system-3d/system-3d.css";
 
 export const metadata: Metadata = {
   title: "GEO Architecture Atlas",

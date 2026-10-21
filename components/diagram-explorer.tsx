@@ -1,21 +1,17 @@
 "use client";
 
-import Panzoom, { type PanzoomObject } from "@panzoom/panzoom";
-import Link from "next/link";
 import {
   Check,
   ChevronDown,
-  Expand,
-  Focus,
   Maximize2,
-  Minus,
-  Plus,
-  RefreshCw,
   X,
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
+import { WorkflowEditor } from "@/components/workflow-editor";
+import { ComplianceKnowledgeGraph } from "@/components/compliance-knowledge-graph";
+import { System3DExperience } from "@/components/system-3d-experience";
 import {
   diagramGroups,
   diagrams,
@@ -23,6 +19,8 @@ import {
   type DiagramGroup,
   type DiagramId,
 } from "@/lib/diagrams";
+import { diagramWorkflows } from "@/lib/diagram-workflows";
+import { system3DModel } from "@/lib/system-3d-model";
 
 type DiagramExplorerProps = {
   initialDiagramId: DiagramId;
@@ -42,15 +40,10 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
     diagrams.find((diagram) => diagram.id === initialDiagramId)?.group ?? "system",
   );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scale, setScale] = useState(1);
-  const [loadState, setLoadState] = useState<"loading" | "ready" | "error">("loading");
-  const [assetRevision, setAssetRevision] = useState(0);
   const [fallbackFullscreen, setFallbackFullscreen] = useState(false);
   const [nativeFullscreen, setNativeFullscreen] = useState(false);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const explorerRef = useRef<HTMLDivElement>(null);
-  const panzoomRef = useRef<PanzoomObject | null>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   const selected = useMemo(
     () => diagrams.find((diagram) => diagram.id === selectedId) ?? diagrams[diagrams.length - 1],
@@ -62,82 +55,36 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
   );
 
   useEffect(() => {
-    const image = imageRef.current;
-    if (!image?.complete) return;
-    setLoadState(image.naturalWidth > 0 ? "ready" : "error");
-  }, [assetRevision, selected.id]);
-
-  const fitToViewport = useCallback(
-    (animate = true) => {
-      const viewport = viewportRef.current;
-      const panzoom = panzoomRef.current;
-      if (!viewport || !panzoom) return;
-      const padding = viewport.clientWidth < 640 ? 28 : 72;
-      const nextFit = Math.min(
-        (viewport.clientWidth - padding) / selected.width,
-        (viewport.clientHeight - padding) / selected.height,
-      );
-      const normalizedFit = Math.max(0.08, nextFit);
-      panzoom.setOptions({ minScale: normalizedFit * 0.5, maxScale: 4 });
-      panzoom.pan(0, 0, { animate: false, force: true });
-      panzoom.zoom(normalizedFit, { animate, force: true });
-      setScale(normalizedFit);
-    },
-    [selected.height, selected.width],
-  );
-
-  useEffect(() => {
-    const image = imageRef.current;
-    const viewport = viewportRef.current;
-    if (!image || !viewport || loadState !== "ready") return;
-
-    const panzoom = Panzoom(image, {
-      canvas: true,
-      cursor: "grab",
-      maxScale: 4,
-      minScale: 0.08,
-      step: 0.2,
-      duration: 180,
-      overflow: "hidden",
-    });
-    panzoomRef.current = panzoom;
-    const onChange = () => setScale(panzoom.getScale());
-    image.addEventListener("panzoomchange", onChange);
-
-    const onWheel = (event: WheelEvent) => {
-      if (document.activeElement !== viewport && !event.ctrlKey && !event.metaKey) return;
-      event.preventDefault();
-      panzoom.zoomWithWheel(event, { animate: false });
-    };
-    viewport.addEventListener("wheel", onWheel, { passive: false });
-
-    const resizeObserver = new ResizeObserver(() => fitToViewport(false));
-    resizeObserver.observe(viewport);
-    requestAnimationFrame(() => fitToViewport(false));
-
-    return () => {
-      resizeObserver.disconnect();
-      viewport.removeEventListener("wheel", onWheel);
-      image.removeEventListener("panzoomchange", onChange);
-      panzoom.destroy();
-      panzoomRef.current = null;
-    };
-  }, [assetRevision, fitToViewport, loadState, selected.id]);
-
-  useEffect(() => {
     const onFullscreenChange = () => {
       setNativeFullscreen(Boolean(document.fullscreenElement));
       if (!document.fullscreenElement) setFallbackFullscreen(false);
-      requestAnimationFrame(() => fitToViewport(false));
     };
     document.addEventListener("fullscreenchange", onFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
-  }, [fitToViewport]);
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        requestAnimationFrame(() => canvas.querySelector<HTMLButtonElement>(".react-flow__controls-fitview")?.click());
+      });
+    });
+    observer.observe(canvas);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, [selected.id]);
 
   const chooseDiagram = (diagram: DiagramDefinition) => {
     setSelectedId(diagram.id);
     setActiveGroup(diagram.group);
-    setLoadState("loading");
     setMobileMenuOpen(false);
     router.replace(`${pathname}?diagram=${diagram.id}`, { scroll: false });
   };
@@ -148,13 +95,6 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
     if (first) chooseDiagram(first);
   };
 
-  const zoomIn = () => panzoomRef.current?.zoomIn({ animate: true });
-  const zoomOut = () => panzoomRef.current?.zoomOut({ animate: true });
-  const zoomActual = () => {
-    panzoomRef.current?.pan(0, 0, { animate: false, force: true });
-    panzoomRef.current?.zoom(1, { animate: true, force: true });
-  };
-
   const toggleFullscreen = async () => {
     const explorer = explorerRef.current;
     if (!explorer) return;
@@ -163,25 +103,23 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
       return;
     }
     if (explorer.requestFullscreen) {
+      let timeout = 0;
       try {
-        await explorer.requestFullscreen();
-        requestAnimationFrame(() => fitToViewport(false));
-        return;
+        const entered = await Promise.race([
+          explorer.requestFullscreen().then(() => true),
+          new Promise<boolean>((resolve) => {
+            timeout = window.setTimeout(() => resolve(false), 700);
+          }),
+        ]);
+        window.clearTimeout(timeout);
+        if (entered && document.fullscreenElement) return;
       } catch {
         // Fall through to the in-page fullscreen mode.
+      } finally {
+        window.clearTimeout(timeout);
       }
     }
     setFallbackFullscreen((value) => !value);
-    requestAnimationFrame(() => fitToViewport(false));
-  };
-
-  const onCanvasKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "+" || event.key === "=") zoomIn();
-    else if (event.key === "-") zoomOut();
-    else if (event.key === "0") zoomActual();
-    else if (event.key.toLowerCase() === "f") fitToViewport();
-    else return;
-    event.preventDefault();
   };
 
   return (
@@ -196,9 +134,6 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
           <strong>GEO Agentic System</strong>
           <span>Architecture Atlas</span>
         </div>
-        <Link className="header-workflow-link" href="/workflow">
-          工作流构建器
-        </Link>
       </header>
 
       <div className="group-tabs" role="tablist" aria-label="图表分组">
@@ -235,7 +170,7 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
         )}
       </div>
 
-      <div className="explorer-layout">
+      <div className={`explorer-layout${selected.id === "our-geo-agentic-system" ? " explorer-layout--system3d" : ""}`}>
         <aside className="diagram-sidebar" aria-label="架构图导航">
           <nav>
             <p className="sidebar-label">图表目录</p>
@@ -277,47 +212,21 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
 
           <section className="canvas-frame" aria-label={`${selected.titleZh} 图表查看器`}>
             <div className="canvas-toolbar" role="toolbar" aria-label="图表控制">
-              <ToolbarButton label="缩小" onClick={zoomOut}><Minus size={17} /></ToolbarButton>
-              <span className="zoom-value" aria-live="polite">{Math.round(scale * 100)}%</span>
-              <ToolbarButton label="放大" onClick={zoomIn}><Plus size={17} /></ToolbarButton>
-              <span className="toolbar-divider" aria-hidden="true" />
-              <ToolbarButton label="适应窗口" onClick={() => fitToViewport()}><Focus size={17} /></ToolbarButton>
-              <ToolbarButton label="原始比例" onClick={zoomActual}><Expand size={17} /></ToolbarButton>
               <ToolbarButton label={nativeFullscreen || fallbackFullscreen ? "退出全屏" : "全屏"} onClick={toggleFullscreen}>
                 {nativeFullscreen || fallbackFullscreen ? <X size={17} /> : <Maximize2 size={17} />}
               </ToolbarButton>
             </div>
 
-            <div
-              ref={viewportRef}
-              className="diagram-canvas"
-              tabIndex={0}
-              onKeyDown={onCanvasKeyDown}
-              onDoubleClick={() => fitToViewport()}
-            >
-              {loadState === "loading" && <div className="canvas-status"><span className="loading-mark" />正在准备图表</div>}
-              {loadState === "error" && (
-                <div className="canvas-status canvas-status--error">
-                  <strong>图表加载失败</strong>
-                  <button type="button" onClick={() => { setAssetRevision((value) => value + 1); setLoadState("loading"); }}>
-                    <RefreshCw size={15} />重新加载
-                  </button>
-                </div>
-              )}
-              {/* The SVG must remain an unoptimized DOM image so Panzoom can transform its intrinsic canvas. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                key={`${selected.id}-${assetRevision}`}
-                ref={imageRef}
-                src={`${selected.asset}?v=${assetRevision}`}
-                width={selected.width}
-                height={selected.height}
-                style={{ marginLeft: -selected.width / 2, marginTop: -selected.height / 2 }}
-                alt={selected.alt}
-                draggable={false}
-                className={loadState === "ready" ? "is-ready" : ""}
-                onLoad={() => setLoadState("ready")}
-                onError={() => setLoadState("error")}
+            <div ref={canvasRef} className="diagram-canvas">
+              <WorkflowEditor
+                key={`${selected.id}-${nativeFullscreen}-${fallbackFullscreen}`}
+                initialDocument={diagramWorkflows[selected.id]}
+                className="diagram-flow"
+                locale="zh-CN"
+                readOnly
+                layout={{ direction: diagramWorkflows[selected.id].direction, autoLayout: false }}
+                semanticZoom={false}
+                routing={{ edgeNodeSpacing: 18, edgeEdgeSpacing: 14, crossingRadius: 8, rerouteOnDrag: false }}
               />
             </div>
           </section>
@@ -326,6 +235,12 @@ export function DiagramExplorer({ initialDiagramId }: DiagramExplorerProps) {
             <p>{selected.summary}</p>
             <ul>{selected.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
           </div>
+          {selected.id === "our-geo-agentic-system" && (
+            <>
+              <System3DExperience model={system3DModel} returnHref={`/?diagram=${selected.id}`} embedded />
+              <ComplianceKnowledgeGraph />
+            </>
+          )}
         </main>
       </div>
     </div>

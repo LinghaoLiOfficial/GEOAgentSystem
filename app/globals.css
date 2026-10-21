@@ -98,20 +98,6 @@ a:focus-visible,
   text-transform: uppercase;
 }
 
-.header-workflow-link {
-  margin-left: auto;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  color: #344252;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.header-workflow-link:hover {
-  background: #f3f5f6;
-}
-
 .workflow-page {
   min-height: 100dvh;
   display: flex;
@@ -176,14 +162,227 @@ a:focus-visible,
   min-height: 440px;
 }
 
+.knowledge-graph-section {
+  padding: 30px 28px 34px;
+  border-top: 1px solid #dfe5e8;
+  background: #f7f9fa;
+}
+
+.knowledge-graph-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto 18px;
+}
+
+.knowledge-graph-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 8px;
+  color: #087f78;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.knowledge-graph-heading h2 {
+  margin: 0;
+  color: #17212b;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.knowledge-graph-description {
+  margin: 7px 0 0;
+  color: #687482;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.knowledge-graph-stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 2px;
+  color: #71808c;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.knowledge-graph-stats strong {
+  margin-right: 4px;
+  color: #263441;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.knowledge-graph-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #687482;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.knowledge-graph-live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e6a23c;
+}
+
+.knowledge-graph-panel {
+  max-width: 1500px;
+  margin: 0 auto;
+  border: 1px solid #dce3e7;
+  background: #fff;
+}
+
+.knowledge-graph-tools {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 46px;
+  padding: 0 12px;
+  border-bottom: 1px solid #edf0f2;
+}
+
+.knowledge-graph-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 260px;
+  color: #8a96a1;
+}
+
+.knowledge-graph-search-wrap input {
+  width: 100%;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: #263441;
+  background: transparent;
+  font-size: 11px;
+}
+
+.knowledge-graph-search-wrap input::placeholder { color: #9aa4ad; }
+
+.knowledge-graph-search-results {
+  position: absolute;
+  top: 35px;
+  left: -8px;
+  width: 300px;
+  max-height: 280px;
+  overflow: auto;
+  border: 1px solid #dce3e7;
+  background: white;
+  box-shadow: 0 8px 22px rgba(23, 33, 43, 0.12);
+}
+
+.knowledge-graph-search-results button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  border-bottom: 1px solid #f0f2f4;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.knowledge-graph-search-results button:hover { background: #f5f8f9; }
+.knowledge-graph-search-results button > i,
+.knowledge-graph-inspector-type > i,
+.knowledge-graph-legend i { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; }
+.knowledge-graph-search-results button span { display: flex; flex-direction: column; gap: 3px; }
+.knowledge-graph-search-results button small { color: #8a96a1; font-size: 9px; }
+
+.knowledge-graph-zoom { display: flex; align-items: center; gap: 3px; }
+.knowledge-graph-zoom button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: #667482;
+  cursor: pointer;
+}
+.knowledge-graph-zoom button:hover { background: #f1f5f6; color: #087f78; }
+
+.knowledge-graph-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  min-height: 510px;
+}
+
+.knowledge-graph-canvas {
+  position: relative;
+  min-width: 0;
+  min-height: 510px;
+  overflow: hidden;
+  background-color: #fcfdfd;
+  background-image: radial-gradient(#dce4e7 0.75px, transparent 0.75px);
+  background-size: 18px 18px;
+}
+
+.knowledge-graph-canvas canvas { display: block; }
+.knowledge-graph-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  color: #788590;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.knowledge-graph-inspector {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 15px;
+  border-left: 1px solid #edf0f2;
+  background: #fff;
+}
+
+.knowledge-graph-inspector-type { display: flex; align-items: center; gap: 7px; color: #687482; font-size: 10px; }
+.kg-status { margin-left: auto; padding: 3px 5px; font-size: 9px; }
+.kg-status--verified { color: #147d66; background: #e7f6f1; }
+.kg-status--review { color: #996300; background: #fff5dc; }
+.kg-status--risk { color: #b42318; background: #feeeec; }
+.knowledge-graph-inspector h3 { margin: 17px 0 6px; color: #1d2935; font-size: 15px; line-height: 1.45; }
+.knowledge-graph-inspector > p { margin: 0; color: #75818c; font-size: 10px; line-height: 1.65; }
+.knowledge-graph-inspector-foot { display: flex; flex-direction: column; gap: 5px; margin-top: auto; padding-top: 18px; border-top: 1px solid #edf0f2; color: #87929c; font-size: 9px; }
+.knowledge-graph-inspector-foot strong { color: #344252; font-size: 11px; font-weight: 600; }
+
+.knowledge-graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  min-height: 40px;
+  align-items: center;
+  padding: 7px 14px;
+  border-top: 1px solid #edf0f2;
+}
+
+.knowledge-graph-legend span { display: flex; align-items: center; gap: 6px; color: #697783; font-size: 9px; white-space: nowrap; }
+.knowledge-graph-legend i { width: 7px; height: 7px; }
+.knowledge-graph-note { max-width: 1500px; margin: 8px auto 0; color: #8b969f; font-size: 9px; }
+
 @media (max-width: 640px) {
   .app-header {
     padding: 0 14px;
-  }
-
-  .header-workflow-link {
-    padding: 7px 9px;
-    font-size: 11px;
   }
 
   .workflow-header {
@@ -219,8 +418,10 @@ a:focus-visible,
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  min-width: 156px;
+  flex: 1;
+  min-width: 0;
   padding: 0 18px;
   border: 0;
   background: transparent;
@@ -269,6 +470,20 @@ a:focus-visible,
   display: grid;
   grid-template-columns: 304px minmax(0, 1fr);
   height: calc(100dvh - 116px);
+}
+
+.explorer-layout--system3d {
+  height: auto;
+  min-height: calc(100dvh - 116px);
+}
+
+.explorer-layout--system3d .diagram-workspace {
+  display: block;
+}
+
+.explorer-layout--system3d .canvas-frame {
+  height: min(72vh, 860px);
+  min-height: 560px;
 }
 
 .diagram-sidebar {
@@ -483,82 +698,96 @@ a:focus-visible,
   width: 100%;
   height: 100%;
   min-height: 380px;
-  display: grid;
-  place-items: center;
+  position: relative;
   overflow: hidden;
-  background-color: var(--workspace);
-  background-image: linear-gradient(#e3e7e9 1px, transparent 1px), linear-gradient(90deg, #e3e7e9 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: -1px -1px;
+  background: #f5f7f8;
 }
 
-.diagram-canvas::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: inset 0 0 80px rgba(46, 58, 69, 0.045);
+.diagram-flow,
+.diagram-flow .workflow-builder-root,
+.diagram-flow .workflow-builder__editor,
+.diagram-flow .workflow-builder__workspace,
+.diagram-flow .workflow-builder__canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
-.diagram-canvas img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  max-width: none;
-  max-height: none;
-  opacity: 0;
-  user-select: none;
-  transition: opacity 180ms ease;
-  box-shadow: 0 3px 18px rgba(26, 37, 48, 0.08);
-  will-change: transform;
+.diagram-flow .workflow-builder-root {
+  --wfb-bg: #f5f7f8;
+  --wfb-panel: #fff;
+  --wfb-border: #d9dee3;
+  --wfb-text: #17212b;
+  --wfb-focus: #2563eb;
+  background: #f5f7f8;
 }
 
-.diagram-canvas img.is-ready {
-  opacity: 1;
+.diagram-flow .workflow-builder__toolbar,
+.diagram-flow .workflow-builder__layout {
+  display: none;
 }
 
-.canvas-status {
-  position: absolute;
-  z-index: 3;
+.diagram-flow .workflow-builder__editor {
   display: flex;
-  align-items: center;
-  gap: 9px;
-  color: #66727e;
-  font-size: 11px;
-}
-
-.loading-mark {
-  width: 14px;
-  height: 14px;
-  border: 2px solid #cbd2d8;
-  border-top-color: #44505c;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-.canvas-status--error {
   flex-direction: column;
 }
 
-.canvas-status--error strong {
-  color: #9f321f;
-  font-size: 13px;
+.diagram-flow .workflow-builder__workspace {
+  flex: 1;
 }
 
-.canvas-status--error button {
-  display: inline-flex;
+.diagram-flow .workflow-builder__generic-node {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 10px;
-  border: 1px solid #d2d8dd;
-  background: white;
-  cursor: pointer;
-  font-size: 11px;
+  justify-content: center;
+  padding: 7px;
+  box-shadow: 0 1px 3px rgba(27, 39, 51, 0.08);
 }
 
-.mobile-summary {
+.diagram-flow .workflow-builder__generic-node header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  text-align: center;
+}
+
+.diagram-flow .workflow-builder__generic-node header strong {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.diagram-flow .workflow-builder__generic-node header span {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  font-size: 8px;
+  line-height: 1;
+  opacity: 0.75;
+}
+
+.diagram-flow .workflow-builder__generic-node dl {
   display: none;
+}
+
+.diagram-flow .react-flow__node[data-id^="region-"] {
+  z-index: -1 !important;
+  pointer-events: none;
+}
+
+.diagram-flow .react-flow__node[data-id^="region-"] .workflow-builder__generic-node {
+  opacity: 0;
 }
 
 @keyframes spin {
@@ -679,6 +908,10 @@ a:focus-visible,
     padding: 14px;
   }
 
+  .explorer-layout--system3d {
+    min-height: 0;
+  }
+
   .diagram-heading {
     min-height: 64px;
     padding: 0 1px 14px;
@@ -689,6 +922,11 @@ a:focus-visible,
   }
 
   .canvas-frame {
+    height: 68svh;
+    min-height: 460px;
+  }
+
+  .explorer-layout--system3d .canvas-frame {
     height: 68svh;
     min-height: 460px;
   }
@@ -740,6 +978,48 @@ a:focus-visible,
   .zoom-value {
     width: 41px;
   }
+}
+
+@media (max-width: 760px) {
+  .knowledge-graph-section {
+    margin: 0 -14px;
+    padding: 24px 14px 28px;
+  }
+
+  .knowledge-graph-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .knowledge-graph-stats { gap: 14px; }
+  .knowledge-graph-heading h2 { font-size: 19px; }
+  .knowledge-graph-description { max-width: 520px; }
+  .knowledge-graph-body { grid-template-columns: minmax(0, 1fr); }
+  .knowledge-graph-canvas { min-height: 440px; }
+  .knowledge-graph-inspector {
+    min-height: 112px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: start;
+    gap: 8px 12px;
+    padding: 12px;
+    border-top: 1px solid #edf0f2;
+    border-left: 0;
+  }
+  .knowledge-graph-inspector-type { grid-column: 1 / -1; }
+  .knowledge-graph-inspector h3 { margin: 0; }
+  .knowledge-graph-inspector > p { align-self: center; text-align: right; }
+  .knowledge-graph-inspector-foot { display: none; }
+}
+
+@media (max-width: 480px) {
+  .knowledge-graph-section { margin: 0 -14px; padding-right: 10px; padding-left: 10px; }
+  .knowledge-graph-tools { padding: 0 8px; }
+  .knowledge-graph-search-wrap { width: min(240px, calc(100vw - 130px)); }
+  .knowledge-graph-search-results { width: min(290px, calc(100vw - 50px)); }
+  .knowledge-graph-canvas { min-height: 390px; }
+  .knowledge-graph-legend { gap: 9px 12px; padding: 9px 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,467 @@
+.system3d-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f9f9;
+  color: #17242d;
+}
+
+.system3d-page--embedded {
+  min-height: 0;
+  display: block;
+  border-top: 1px solid #dfe5e6;
+}
+
+.system3d-page--embedded .system3d-intro {
+  padding: 24px 0 16px;
+}
+
+.system3d-page--embedded .system3d-stage {
+  height: 480px;
+  min-height: 420px;
+  margin: 0;
+}
+
+.system3d-page--embedded .system3d-lower {
+  padding: 16px 0 24px;
+}
+
+.system3d-header {
+  height: 62px;
+  flex: 0 0 62px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  border-bottom: 1px solid #dfe5e6;
+  background: #fff;
+}
+
+.system3d-back,
+.system3d-header-actions button {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #dce2e4;
+  background: #fff;
+  color: #34434c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.system3d-back:hover,
+.system3d-header-actions button:hover {
+  background: #f2f5f5;
+}
+
+.system3d-brand {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.15;
+}
+
+.system3d-brand strong {
+  font-size: 13px;
+  font-weight: 680;
+}
+
+.system3d-brand span {
+  color: #77858c;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.system3d-header-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.system3d-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 30px 18px;
+}
+
+.system3d-kicker {
+  margin: 0 0 7px;
+  color: #657a7b;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.system3d-intro h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.system3d-description {
+  margin: 7px 0 0;
+  color: #69777f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.system3d-count {
+  margin: 0 0 3px;
+  color: #68777f;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.system3d-count span {
+  padding: 0 5px;
+  color: #a5afb3;
+}
+
+.system3d-stage {
+  position: relative;
+  flex: 1 0 420px;
+  min-height: 420px;
+  margin: 0 20px;
+  overflow: hidden;
+  border: 1px solid #dce3e5;
+  background: #eef2f3;
+}
+
+.system3d-scene-host,
+.system3d-webgl,
+.system3d-label-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.system3d-scene-host {
+  overflow: hidden;
+}
+
+.system3d-webgl {
+  display: block;
+  outline: none;
+  touch-action: none;
+}
+
+.system3d-label-layer {
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.system3d-domain-label {
+  max-width: 190px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(20, 34, 42, 0.35);
+  white-space: nowrap;
+}
+
+.system3d-domain-count {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 8px;
+  font-weight: 650;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(20, 34, 42, 0.32);
+  white-space: nowrap;
+}
+
+.system3d-node-label {
+  max-width: 150px;
+  overflow: hidden;
+  padding: 2px 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #26343c;
+  font-size: 10px;
+  font-weight: 620;
+  line-height: 1.15;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.system3d-stage-caption {
+  position: absolute;
+  right: 13px;
+  bottom: 12px;
+  left: 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+  color: #6b7b81;
+  font-size: 9px;
+}
+
+.system3d-stage-caption span:first-child {
+  color: #42555d;
+  font-weight: 700;
+}
+
+.system3d-lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+  gap: 22px;
+  padding: 18px 30px 24px;
+}
+
+.system3d-domains {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+  gap: 6px;
+}
+
+.system3d-domains button {
+  min-width: 0;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.system3d-domains button:hover {
+  background: #edf2f2;
+}
+
+.system3d-domains button.is-active {
+  border-color: #d8e0e1;
+  background: #fff;
+}
+
+.domain-swatch {
+  width: 7px;
+  height: 22px;
+  flex: 0 0 7px;
+  background: var(--domain-color);
+}
+
+.system3d-domains button strong,
+.system3d-domains button small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.system3d-domains button strong {
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.system3d-domains button small {
+  margin-top: 4px;
+  color: #859198;
+  font-size: 8px;
+}
+
+.system3d-inspector {
+  min-height: 90px;
+  padding: 2px 0 0 18px;
+  border-left: 1px solid #dfe5e6;
+}
+
+.system3d-module-select {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #77858b;
+  font-size: 9px;
+}
+
+.system3d-module-select select {
+  width: 100%;
+  min-width: 0;
+  height: 30px;
+  padding: 0 7px;
+  border: 1px solid #dce3e4;
+  border-radius: 0;
+  background: #fff;
+  color: #26343c;
+  font-size: 10px;
+}
+
+.system3d-inspector > small,
+.inspector-heading small {
+  color: #77858b;
+  font-size: 9px;
+}
+
+.system3d-inspector h2 {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.system3d-inspector p {
+  margin: 7px 0 0;
+  color: #68777f;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.inspector-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.inspector-heading h2 {
+  margin-top: 3px;
+}
+
+.node-type-marker {
+  width: 8px;
+  height: 26px;
+  flex: 0 0 8px;
+  margin-top: 2px;
+  background: #6d8c78;
+}
+
+.node-type-marker--agent { background: #4568a8; }
+.node-type-marker--data { background: #227c8b; }
+.node-type-marker--evaluation { background: #bd7041; }
+.node-type-marker--decision { background: #77808c; }
+
+.inspector-relations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.inspector-relations span {
+  max-width: 160px;
+  overflow: hidden;
+  padding: 3px 5px;
+  border: 1px solid #dce3e4;
+  color: #5d6a70;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.system3d-status {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  background: #eef2f3;
+  color: #5d6d74;
+  font-size: 11px;
+  text-align: center;
+}
+
+.system3d-status--error strong {
+  color: #273740;
+  font-size: 13px;
+}
+
+.system3d-status--error span {
+  font-size: 10px;
+}
+
+@media (min-width: 1200px) {
+  .system3d-stage {
+    min-height: 0;
+  }
+
+  .system3d-page--embedded .system3d-stage {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 800px) {
+  .system3d-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    padding: 20px 18px 14px;
+  }
+
+  .system3d-count {
+    font-size: 10px;
+  }
+
+  .system3d-stage {
+    flex-basis: 55svh;
+    min-height: 390px;
+    margin: 0 10px;
+  }
+
+  .system3d-page--embedded .system3d-stage {
+    height: 390px;
+    min-height: 350px;
+    margin: 0;
+  }
+
+  .system3d-lower {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 14px 14px 22px;
+  }
+
+  .system3d-domains {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .system3d-inspector {
+    min-height: auto;
+    padding: 12px 2px 0;
+    border-top: 1px solid #dfe5e6;
+    border-left: 0;
+  }
+
+  .system3d-module-select {
+    max-width: 440px;
+  }
+
+  .system3d-stage-caption {
+    flex-direction: column;
+    gap: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .system3d-header {
+    padding: 0 12px;
+  }
+
+  .system3d-brand span {
+    display: none;
+  }
+
+  .system3d-intro h1 {
+    font-size: 21px;
+  }
+
+  .system3d-stage {
+    flex-basis: 54svh;
+    min-height: 350px;
+  }
+
+  .system3d-count {
+    white-space: normal;
+  }
+}
